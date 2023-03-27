@@ -14,6 +14,11 @@ import {
     remove as reducerRemove
 } from '../redux/list'
 
+export function validateEmail(email) {
+    var re = /\S+@\S+\.\S+/;
+    return re.test(email);
+}
+
 export default function BasicList() {
 
     const field = useSelector((state) => state.list.field);
@@ -23,7 +28,16 @@ export default function BasicList() {
 
     function add() {
 
-        dispatch(reducerAdd(field))
+        if (validateEmail(field) === true) {
+
+            dispatch(reducerAdd(field))
+            dispatch(reducerDefine(""))
+
+        } else {
+
+            alert("Alert! Enter the correct email address.");
+
+        }
 
     }
 

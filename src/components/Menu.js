@@ -11,6 +11,7 @@ export default function Menu() {
         <div>
 
             <Tabs value={pathname}>
+            <Tab component={Link} to="/" value="/" label="" sx={{display:"none"}} />
                 <Tab component={Link} to="/counter" value="/counter" label="Counter" />
                 <Tab component={Link} to="/list" value="/list" label="List" />
             </Tabs>
